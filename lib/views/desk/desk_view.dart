@@ -52,7 +52,7 @@ class DeskView extends StatelessWidget {
             onRetry: () {
               model.getData();
             },
-            error: model.error,
+            error: model.error!,
             context: context,
           );
         } else {

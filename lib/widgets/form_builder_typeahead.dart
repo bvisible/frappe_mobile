@@ -1,6 +1,5 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
@@ -324,7 +323,7 @@ class FormBuilderTypeAhead<T> extends FormBuilderField<T> {
                 controller: state._typeAheadController,
                 style: state.enabled
                     ? textFieldConfiguration.style
-                    : theme.textTheme.subtitle1.copyWith(
+                    : theme.textTheme.titleMedium.copyWith(
                         color: theme.disabledColor,
                       ),
                 focusNode: state.effectiveFocusNode,

@@ -1,4 +1,3 @@
-// @dart=2.9
 import 'package:flutter/foundation.dart';
 import 'package:frappe_app/app/locator.dart';
 import 'package:frappe_app/services/api/api.dart';
@@ -10,9 +9,9 @@ class TagsBottomSheetViewModel extends BaseViewModel {
   var currentTags = [];
 
   addTag({
-    @required String doctype,
-    @required String name,
-    @required String tag,
+    required String doctype,
+    required String name,
+    required String tag,
   }) async {
     var addedTag = await locator<Api>().addTag(
       doctype,
@@ -26,10 +25,10 @@ class TagsBottomSheetViewModel extends BaseViewModel {
   }
 
   removeTag({
-    @required String doctype,
-    @required String name,
-    @required String tag,
-    @required int index,
+    required String doctype,
+    required String name,
+    required String tag,
+    required int index,
   }) async {
     await locator<Api>().removeTag(
       doctype,
@@ -43,8 +42,8 @@ class TagsBottomSheetViewModel extends BaseViewModel {
   }
 
   getTags({
-    @required String query,
-    @required String doctype,
+    required String query,
+    required String doctype,
   }) async {
     var lowercaseQuery = query.toLowerCase();
     var response = await locator<Api>().getTags(

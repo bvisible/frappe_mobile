@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:frappe_app/model/common.dart';
 import 'package:frappe_app/widgets/form_builder_chips_input.dart';
@@ -11,8 +10,6 @@ import '../../app/locator.dart';
 import '../../config/palette.dart';
 import '../../services/api/api.dart';
 
-import 'base_input.dart';
-import 'base_control.dart';
 
 class MultiSelect extends StatefulWidget {
   final DoctypeField doctypeField;
@@ -43,15 +40,13 @@ class MultiSelect extends StatefulWidget {
   _MultiSelectState createState() => _MultiSelectState();
 }
 
-class _MultiSelectState extends State<MultiSelect> with Control, ControlInput {
+class _MultiSelectState extends State<MultiSelect> {
   @override
   Widget build(BuildContext context) {
     List<String? Function(dynamic)> validators = [];
 
-    var f = setMandatory(widget.doctypeField);
-
-    if (f != null) {
-      validators.add(f(context));
+    if (widget.doctypeField.reqd == 1) {
+      validators.add(FormBuilderValidators.required());
     }
 
     var initialValue;

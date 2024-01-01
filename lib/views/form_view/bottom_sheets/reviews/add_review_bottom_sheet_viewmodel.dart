@@ -1,5 +1,4 @@
 import 'package:frappe_app/app/locator.dart';
-import 'package:frappe_app/model/common.dart';
 import 'package:frappe_app/model/config.dart';
 import 'package:frappe_app/model/doctype_response.dart';
 import 'package:frappe_app/model/get_doc_response.dart';
@@ -81,7 +80,7 @@ class AddReviewBottomSheetViewModel extends BaseViewModel {
     var involvedUsers = userFields.map((field) => doc[field]).toList();
 
     var a = docInfo.communications
-        .where((d) => d.sender != null && d.deliveryStatus == 'sent')
+        .where((d) => d.deliveryStatus == 'sent')
         .map((d) => d.sender)
         .toList();
     a.addAll(docInfo.comments.map((d) => d.owner).toList());

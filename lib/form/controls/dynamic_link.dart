@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:flutter_pagewise/flutter_pagewise.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:frappe_app/config/frappe_icons.dart';
 import 'package:frappe_app/config/palette.dart';
 import 'package:frappe_app/model/common.dart';
 import 'package:frappe_app/utils/frappe_icon.dart';
-import 'package:frappe_app/views/form_view/form_view.dart';
 import 'package:frappe_app/widgets/form_builder_typeahead.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import '../../model/doctype_response.dart';
 import '../../app/locator.dart';
 import '../../services/api/api.dart';
 
-import '../../utils/helpers.dart';
 import '../../model/offline_storage.dart';
 
-import 'base_control.dart';
-import 'base_input.dart';
 
 class DynamicLink extends StatefulWidget {
   final DoctypeField doctypeField;
@@ -31,7 +25,6 @@ class DynamicLink extends StatefulWidget {
   final Function? noItemsFoundBuilder;
   final Widget? prefixIcon;
   final ItemBuilder? itemBuilder;
-  final SuggestionsCallback? suggestionsCallback;
   final AxisDirection direction;
   final TextEditingController? controller;
 
@@ -45,7 +38,6 @@ class DynamicLink extends StatefulWidget {
     this.noItemsFoundBuilder,
     this.showInputBorder = false,
     this.itemBuilder,
-    this.suggestionsCallback,
     this.controller,
     this.direction = AxisDirection.down,
   });
@@ -54,17 +46,14 @@ class DynamicLink extends StatefulWidget {
   _DynamicLinkState createState() => _DynamicLinkState();
 }
 
-class _DynamicLinkState extends State<DynamicLink> with Control, ControlInput {
+class _DynamicLinkState extends State<DynamicLink>{
   @override
   Widget build(BuildContext context) {
     List<String? Function(dynamic)> validators = [];
-    var f = setMandatory(widget.doctypeField);
     late bool enabled;
-
-    if (f != null) {
-      validators.add(
-        f(context),
-      );
+    
+    if (widget.doctypeField.reqd == 1) {
+      validators.add(FormBuilderValidators.required());
     }
 
     // if (widget.doctypeField.readOnly == 1 ||
@@ -115,12 +104,12 @@ class _DynamicLinkState extends State<DynamicLink> with Control, ControlInput {
                   widget.doc[widget.doctypeField.fieldname] != ""
               ? IconButton(
                   onPressed: () {
-                    pushNewScreen(
-                      context,
-                      screen: FormView(
-                          doctype: widget.doc[widget.doctypeField.options],
-                          name: widget.doc[widget.doctypeField.fieldname]),
-                    );
+                    // pushNewScreen(
+                    //   context,
+                    //   screen: FormView(
+                    //       doctype: widget.doc[widget.doctypeField.options],
+                    //       name: widget.doc[widget.doctypeField.fieldname]),
+                    // );
                   },
                   icon: FrappeIcon(
                     FrappeIcons.arrow_right_2,
@@ -157,7 +146,7 @@ class _DynamicLinkState extends State<DynamicLink> with Control, ControlInput {
                 );
               }
             },
-        suggestionsCallback: widget.suggestionsCallback ??
+        suggestionsCallback:
             (query) async {
               var lowercaseQuery = query.toLowerCase();
               // var isOnline = await verifyOnline();

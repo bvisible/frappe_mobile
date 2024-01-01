@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 /// A material design checkbox.
 ///
@@ -102,9 +101,7 @@ class CustomCheckbox extends StatefulWidget {
     this.autofocus = false,
     this.shape,
     this.side,
-  })  : assert(tristate != null),
-        assert(tristate || value != null),
-        assert(autofocus != null),
+  })  : assert(tristate || value != null),
         super(key: key);
 
   /// Whether this checkbox is checked.

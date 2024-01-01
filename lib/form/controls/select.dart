@@ -8,10 +8,7 @@ import 'package:frappe_app/utils/frappe_icon.dart';
 import '../../config/palette.dart';
 import '../../model/doctype_response.dart';
 
-import 'base_control.dart';
-import 'base_input.dart';
-
-class Select extends StatelessWidget with Control, ControlInput {
+class Select extends StatelessWidget{
   final DoctypeField doctypeField;
   final OnControlChanged? onControlChanged;
 
@@ -29,12 +26,8 @@ class Select extends StatelessWidget with Control, ControlInput {
   Widget build(BuildContext context) {
     List<String? Function(dynamic)> validators = [];
 
-    var f = setMandatory(doctypeField);
-
-    if (f != null) {
-      validators.add(
-        f(context),
-      );
+    if (doctypeField.reqd == 1) {
+      validators.add(FormBuilderValidators.required());
     }
 
     List opts;
@@ -63,7 +56,7 @@ class Select extends StatelessWidget with Control, ControlInput {
           ? doc![doctypeField.fieldname]
           : doctypeField.defaultValue,
       name: doctypeField.fieldname,
-      hint: Text(doctypeField.label!),
+      // hint: Text(doctypeField.label!),
       decoration: Palette.formFieldDecoration(
         label: doctypeField.label,
       ),

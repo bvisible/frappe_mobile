@@ -1,5 +1,3 @@
-// @dart=2.9
-
 import 'package:flutter/material.dart';
 import 'package:frappe_app/config/palette.dart';
 
@@ -13,8 +11,8 @@ class Indicator {
     };
 
     if (doctypeColor[doctype] != null &&
-        doctypeColor[doctype][status] != null) {
-      return doctypeColor[doctype][status];
+        doctypeColor[doctype]![status] != null) {
+      return doctypeColor[doctype]![status]!;
     } else if (["Pending", "Review", "Medium", "Not Approved"]
         .contains(status)) {
       return indicateWarning(status);

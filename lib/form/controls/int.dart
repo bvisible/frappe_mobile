@@ -5,10 +5,7 @@ import 'package:frappe_app/model/doctype_response.dart';
 
 import '../../config/palette.dart';
 
-import 'base_control.dart';
-import 'base_input.dart';
-
-class Int extends StatelessWidget with Control, ControlInput {
+class Int extends StatelessWidget{
   final DoctypeField doctypeField;
   final void Function(String?)? onChanged;
   final Key? key;
@@ -25,12 +22,8 @@ class Int extends StatelessWidget with Control, ControlInput {
   Widget build(BuildContext context) {
     List<String? Function(dynamic)> validators = [];
 
-    var f = setMandatory(doctypeField);
-
-    if (f != null) {
-      validators.add(
-        f(context),
-      );
+    if (doctypeField.reqd == 1) {
+      validators.add(FormBuilderValidators.required());
     }
 
     return FormBuilderTextField(

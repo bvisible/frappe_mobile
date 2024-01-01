@@ -200,10 +200,8 @@ class AddFilter extends StatelessWidget {
                           ),
                         );
 
-                        if (_filter != null && _filter.field != null) {
-                          onUpdate(_filter);
-                        }
-                      },
+                        onUpdate(_filter);
+                                            },
                       child: Card(
                         child: Container(
                           decoration: BoxDecoration(
@@ -256,10 +254,8 @@ class AddFilter extends StatelessWidget {
                           ),
                         );
 
-                        if (_filter != null && _filter.filterOperator != null) {
-                          onUpdate(_filter);
-                        }
-                      },
+                        onUpdate(_filter);
+                                            },
                       child: Card(
                         child: Container(
                           decoration: BoxDecoration(
@@ -305,7 +301,7 @@ class AddFilter extends StatelessWidget {
                           ),
                         );
 
-                        if (_filter != null && _filter.value != null) {
+                        if (_filter.value != null) {
                           onUpdate(_filter);
                         }
                       },

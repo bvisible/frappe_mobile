@@ -4,10 +4,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:frappe_app/config/palette.dart';
 import 'package:frappe_app/model/doctype_response.dart';
 
-import 'base_input.dart';
-import 'base_control.dart';
-
-class Data extends StatelessWidget with Control, ControlInput {
+class Data extends StatelessWidget {
   final DoctypeField doctypeField;
   final Widget? prefixIcon;
   final Color? color;
@@ -27,10 +24,8 @@ class Data extends StatelessWidget with Control, ControlInput {
   Widget build(BuildContext context) {
     List<String? Function(dynamic)> validators = [];
 
-    var f = setMandatory(doctypeField);
-
-    if (f != null) {
-      validators.add(f(context));
+    if (doctypeField.reqd == 1) {
+      validators.add(FormBuilderValidators.required());
     }
 
     return FormBuilderTextField(

@@ -5,7 +5,6 @@ import 'package:frappe_app/config/frappe_palette.dart';
 import 'package:frappe_app/model/get_doc_response.dart';
 import 'package:frappe_app/services/api/api.dart';
 import 'package:frappe_app/utils/frappe_icon.dart';
-import 'package:frappe_app/views/send_email/send_email_view.dart';
 import 'package:frappe_app/widgets/frappe_bottom_sheet.dart';
 
 class ExistingAttachmentsBottomSheet extends StatefulWidget {

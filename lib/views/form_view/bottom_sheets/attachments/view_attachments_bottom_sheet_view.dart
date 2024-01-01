@@ -19,7 +19,6 @@ import 'package:frappe_app/widgets/frappe_bottom_sheet.dart';
 import 'package:frappe_app/widgets/frappe_button.dart';
 import 'package:open_file/open_file.dart';
 
-import 'add_attachments_bottom_sheet_view.dart';
 
 class ViewAttachmentsBottomSheetView extends StatelessWidget {
   final List<Attachments> attachments;

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:frappe_app/model/common.dart';
 import 'package:frappe_app/model/get_doc_response.dart';
 import 'package:frappe_app/model/get_versions_response.dart';
@@ -28,13 +27,13 @@ abstract class Api {
   );
 
   Future<List> fetchList({
-    @required List fieldnames,
-    @required String doctype,
-    @required DoctypeDoc meta,
-    @required String orderBy,
-    List filters,
-    int pageLength,
-    int offset,
+    required List fieldnames,
+    required String doctype,
+    required DoctypeDoc meta,
+    required String orderBy,
+    List? filters,
+    int? pageLength,
+    int? offset,
   });
 
   Future<GetDocResponse> getdoc(String doctype, String name);
@@ -47,13 +46,13 @@ abstract class Api {
   );
 
   Future sendEmail({
-    @required recipients,
+    required recipients,
     cc,
     bcc,
-    @required subject,
-    @required content,
-    @required doctype,
-    @required doctypeName,
+    required subject,
+    required content,
+    required doctype,
+    required doctypeName,
     sendEmail,
     printHtml,
     sendMeACopy,
@@ -79,18 +78,18 @@ abstract class Api {
   Future deleteComment(String name);
 
   Future<List<UploadedFile>> uploadFiles({
-    @required String doctype,
-    @required String name,
-    @required List<FrappeFile> files,
+    required String doctype,
+    required String name,
+    required List<FrappeFile> files,
   });
 
   Future saveDocs(String doctype, Map formValue);
 
   Future<Map> searchLink({
-    String doctype,
-    String refDoctype,
+    required String doctype,
+    String? refDoctype,
     String txt,
-    int pageLength,
+    int? pageLength,
   });
 
   Future toggleLike(String doctype, String name, bool isFav);
@@ -104,17 +103,17 @@ abstract class Api {
   Future addReview(String doctype, String name, Map reviewData);
 
   Future setPermission({
-    @required String doctype,
-    @required String name,
-    @required Map shareInfo,
-    @required String user,
+    required String doctype,
+    required String name,
+    required Map shareInfo,
+    required String user,
   });
 
   Future shareAdd(String doctype, String name, Map shareInfo);
 
   Future shareGetUsers({
-    @required String doctype,
-    @required String name,
+    required String doctype,
+    required String name,
   });
 
   Future<Map> getContactList(String query);

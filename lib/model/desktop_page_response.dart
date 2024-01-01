@@ -206,8 +206,8 @@ class ShortcutItem {
   late String linkTo;
   late String? docView;
   late String label;
-  late dynamic? icon;
-  late dynamic? restrictToDomain;
+  late dynamic icon;
+  late dynamic restrictToDomain;
   late String? statsFilter;
   late String? color;
   late String? format;
@@ -368,11 +368,11 @@ class CardItemLink {
   late String name;
   late int? onboard;
   late String? type;
-  late dynamic? count;
-  late dynamic? dependencies;
+  late dynamic count;
+  late dynamic dependencies;
   late String? doctype;
-  late dynamic? isQueryReport;
-  late dynamic? incompleteDependencies;
+  late dynamic isQueryReport;
+  late dynamic incompleteDependencies;
   late String? icon;
   late String? linkTo;
 

@@ -1,5 +1,3 @@
-// @dart=2.9
-
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:frappe_app/app/locator.dart';
@@ -23,10 +21,10 @@ class ShareBottomSheetView extends StatelessWidget {
   final List<Shared> shares;
 
   const ShareBottomSheetView({
-    Key key,
-    @required this.doctype,
-    @required this.name,
-    @required this.shares,
+    Key? key,
+    required this.doctype,
+    required this.name,
+    required this.shares,
   }) : super(key: key);
 
   @override
@@ -49,7 +47,7 @@ class ShareBottomSheetView extends StatelessWidget {
                     color: Colors.white,
                     border: Border(
                       top: BorderSide(
-                        color: FrappePalette.grey[200],
+                        color: FrappePalette.grey[200]!,
                       ),
                     ),
                   ),
@@ -70,7 +68,7 @@ class ShareBottomSheetView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: PopupMenuButton(
-                          onSelected: (permission) {
+                          onSelected: (String permission) {
                             model.selectPermission(permission);
                           },
                           child: Row(
@@ -179,8 +177,8 @@ class ShareBottomSheetView extends StatelessWidget {
   }
 
   List<Widget> _generateChildren({
-    @required ShareBottomSheetViewModel model,
-    BuildContext context,
+    required ShareBottomSheetViewModel model,
+    BuildContext? context,
   }) {
     var allUsers = OfflineStorage.getItem('allUsers');
     allUsers = allUsers["data"];
@@ -209,30 +207,30 @@ class SharedWithUser extends StatelessWidget {
   final String name;
 
   const SharedWithUser({
-    Key key,
-    this.user,
-    this.share,
-    this.model,
-    this.doctype,
-    this.name,
+    Key? key,
+    required this.user,
+    required this.share,
+    required this.model,
+    required this.doctype,
+    required this.name,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     String title;
-    String subtitle;
-    String userPermission;
+    String? subtitle;
+    late String userPermission;
 
     if (user != null) {
       title = user["full_name"];
     } else if (share.user == null && share.everyone == 1) {
       title = "Everyone";
     } else {
-      title = share.user;
+      title = share.user!;
     }
 
     if (user != null) {
-      subtitle = share.user;
+      subtitle = share.user!;
     }
 
     if (share.read == 1 && share.write == 1 && share.share == 1) {
@@ -259,7 +257,7 @@ class SharedWithUser extends StatelessWidget {
         subtitle ?? "",
       ),
       trailing: PopupMenuButton(
-        onSelected: (permission) {
+        onSelected: (String permission) {
           model.updatePermission(
             currentPermission: userPermission,
             newPermission: permission,

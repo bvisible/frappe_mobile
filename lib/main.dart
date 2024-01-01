@@ -1,5 +1,3 @@
-// @dart=2.9
-
 import 'dart:isolate';
 import 'dart:ui';
 
@@ -13,7 +11,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'utils/helpers.dart';
 import 'utils/http.dart';
 
-import 'scheduler.dart';
 import 'app/locator.dart';
 import 'app.dart';
 
@@ -39,8 +36,10 @@ void main() async {
   );
 }
 
-void downloadCallback(String id, DownloadTaskStatus status, int progress) {
-  final SendPort send =
+void downloadCallback(String id, int status, int progress) {
+  final SendPort? send =
       IsolateNameServer.lookupPortByName('downloader_send_port');
-  send.send([id, status, progress]);
+  if(send != null) {
+    send.send([id, status, progress]);
+  }
 }

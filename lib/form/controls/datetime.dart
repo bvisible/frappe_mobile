@@ -6,10 +6,7 @@ import '../../config/palette.dart';
 import '../../model/doctype_response.dart';
 import '../../utils/helpers.dart';
 
-import 'base_control.dart';
-import 'base_input.dart';
-
-class DatetimeField extends StatelessWidget with Control, ControlInput {
+class DatetimeField extends StatelessWidget {
   final DoctypeField doctypeField;
 
   final Key? key;
@@ -34,12 +31,8 @@ class DatetimeField extends StatelessWidget with Control, ControlInput {
     }
     List<String? Function(dynamic)> validators = [];
 
-    var f = setMandatory(doctypeField);
-
-    if (f != null) {
-      validators.add(
-        f(context),
-      );
+    if (doctypeField.reqd == 1) {
+      validators.add(FormBuilderValidators.required());
     }
 
     return FormBuilderDateTimePicker(

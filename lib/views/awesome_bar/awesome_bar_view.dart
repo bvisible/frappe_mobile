@@ -22,7 +22,7 @@ class Awesombar extends StatelessWidget {
       builder: (context, model, child) {
         if (model.error != null) {
           return handleError(
-            error: model.error,
+            error: model.error!,
             context: context,
             onRetry: () {
               model.refresh();

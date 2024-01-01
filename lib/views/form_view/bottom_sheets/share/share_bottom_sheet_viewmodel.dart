@@ -1,4 +1,3 @@
-// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:frappe_app/app/locator.dart';
 import 'package:frappe_app/model/get_doc_response.dart';
@@ -19,10 +18,10 @@ class ShareBottomSheetViewModel extends BaseViewModel {
   var currentPermission = "Can Read";
 
   addShare({
-    @required String doctype,
-    @required String name,
-    @required String permission,
-    @required List users,
+    required String doctype,
+    required String name,
+    required String permission,
+    required List users,
   }) async {
     for (var user in users) {
       var permissions = {
@@ -61,11 +60,11 @@ class ShareBottomSheetViewModel extends BaseViewModel {
   }
 
   updatePermission({
-    @required String doctype,
-    @required String name,
-    @required String newPermission,
-    @required String currentPermission,
-    @required String user,
+    required String doctype,
+    required String name,
+    required String newPermission,
+    required String currentPermission,
+    required String user,
   }) async {
     var reqs = [];
     if (currentPermission == "Can Write") {

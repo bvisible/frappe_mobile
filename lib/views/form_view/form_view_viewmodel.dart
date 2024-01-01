@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:frappe_app/model/common.dart';
 import 'package:frappe_app/model/get_doc_response.dart';
 import 'package:frappe_app/utils/loading_indicator.dart';
-import 'package:injectable/injectable.dart';
 
 import '../../app/locator.dart';
 import '../../model/doctype_response.dart';
@@ -13,8 +12,6 @@ import '../../services/api/api.dart';
 import '../../model/offline_storage.dart';
 import '../../model/config.dart';
 import '../../utils/enums.dart';
-import '../../utils/helpers.dart';
-import '../../model/queue.dart';
 
 class FormViewViewModel extends BaseViewModel {
   late String name;

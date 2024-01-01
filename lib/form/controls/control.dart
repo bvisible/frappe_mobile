@@ -1,7 +1,5 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:frappe_app/app/locator.dart';
 import 'package:frappe_app/config/frappe_palette.dart';
 
 import 'package:frappe_app/config/palette.dart';
@@ -10,14 +8,10 @@ import 'package:frappe_app/form/controls/dynamic_link.dart';
 import 'package:frappe_app/form/controls/read_only.dart';
 import 'package:frappe_app/form/controls/text.dart';
 import 'package:frappe_app/model/common.dart';
-import 'package:frappe_app/model/config.dart';
 import 'package:frappe_app/model/doctype_response.dart';
-import 'package:frappe_app/services/api/api.dart';
-import 'package:frappe_app/utils/helpers.dart';
 import 'package:frappe_app/widgets/custom_expansion_tile.dart';
 import 'package:frappe_app/widgets/section.dart';
 
-import '../../config/palette.dart';
 
 import './custom_table.dart';
 import './check.dart';

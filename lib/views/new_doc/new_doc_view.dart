@@ -10,7 +10,6 @@ import 'package:frappe_app/views/new_doc/new_doc_viewmodel.dart';
 import 'package:frappe_app/widgets/header_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import '../../model/doctype_response.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:flutter_pagewise/flutter_pagewise.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:frappe_app/config/frappe_icons.dart';
 import 'package:frappe_app/config/palette.dart';
@@ -8,7 +7,6 @@ import 'package:frappe_app/model/common.dart';
 import 'package:frappe_app/utils/frappe_icon.dart';
 import 'package:frappe_app/views/form_view/form_view.dart';
 import 'package:frappe_app/widgets/form_builder_typeahead.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import '../../model/doctype_response.dart';
 import '../../app/locator.dart';
@@ -16,9 +14,6 @@ import '../../services/api/api.dart';
 
 import '../../utils/helpers.dart';
 import '../../model/offline_storage.dart';
-
-import 'base_control.dart';
-import 'base_input.dart';
 
 class LinkField extends StatefulWidget {
   final DoctypeField doctypeField;
@@ -31,7 +26,6 @@ class LinkField extends StatefulWidget {
   final Function? noItemsFoundBuilder;
   final Widget? prefixIcon;
   final ItemBuilder? itemBuilder;
-  final SuggestionsCallback? suggestionsCallback;
   final AxisDirection direction;
   final TextEditingController? controller;
 
@@ -45,7 +39,6 @@ class LinkField extends StatefulWidget {
     this.noItemsFoundBuilder,
     this.showInputBorder = false,
     this.itemBuilder,
-    this.suggestionsCallback,
     this.controller,
     this.direction = AxisDirection.down,
   });
@@ -54,17 +47,14 @@ class LinkField extends StatefulWidget {
   _LinkFieldState createState() => _LinkFieldState();
 }
 
-class _LinkFieldState extends State<LinkField> with Control, ControlInput {
+class _LinkFieldState extends State<LinkField> {
   @override
   Widget build(BuildContext context) {
     List<String? Function(dynamic)> validators = [];
-    var f = setMandatory(widget.doctypeField);
     late bool enabled;
 
-    if (f != null) {
-      validators.add(
-        f(context),
-      );
+    if (widget.doctypeField.reqd == 1) {
+      validators.add(FormBuilderValidators.required());
     }
 
     // if (widget.doctypeField.readOnly == 1 ||
@@ -115,12 +105,12 @@ class _LinkFieldState extends State<LinkField> with Control, ControlInput {
                   widget.doc?[widget.doctypeField.fieldname] != ""
               ? IconButton(
                   onPressed: () {
-                    pushNewScreen(
-                      context,
-                      screen: FormView(
-                          doctype: widget.doctypeField.options,
-                          name: widget.doc![widget.doctypeField.fieldname]),
-                    );
+                    // pushNewScreen(
+                    //   context,
+                    //   screen: FormView(
+                    //       doctype: widget.doctypeField.options,
+                    //       name: widget.doc![widget.doctypeField.fieldname]),
+                    // );
                   },
                   icon: FrappeIcon(
                     FrappeIcons.arrow_right_2,
@@ -157,43 +147,42 @@ class _LinkFieldState extends State<LinkField> with Control, ControlInput {
                 );
               }
             },
-        suggestionsCallback: widget.suggestionsCallback ??
-            (query) async {
-              var lowercaseQuery = query.toLowerCase();
-              var isOnline = await verifyOnline();
-              if (!isOnline) {
-                var linkFull = await OfflineStorage.getItem(
-                    '${widget.doctypeField.options}LinkFull');
-                linkFull = linkFull["data"];
+        suggestionsCallback: (query) async {
+          var lowercaseQuery = query.toLowerCase();
+          var isOnline = await verifyOnline();
+          if (!isOnline) {
+            var linkFull = await OfflineStorage.getItem(
+                '${widget.doctypeField.options}LinkFull');
+            linkFull = linkFull["data"];
 
-                if (linkFull != null) {
-                  return linkFull["results"].where(
-                    (link) {
-                      return (link["value"] as String)
-                          .toLowerCase()
-                          .contains(lowercaseQuery);
-                    },
-                  ).toList();
-                } else {
-                  var queryLink = await OfflineStorage.getItem(
-                      '$lowercaseQuery${widget.doctypeField.options}Link');
-                  queryLink = queryLink["data"];
+            if (linkFull != null) {
+              return linkFull["results"].where(
+                (link) {
+                  return (link["value"] as String)
+                      .toLowerCase()
+                      .contains(lowercaseQuery);
+                },
+              ).toList();
+            } else {
+              var queryLink = await OfflineStorage.getItem(
+                  '$lowercaseQuery${widget.doctypeField.options}Link');
+              queryLink = queryLink["data"];
 
-                  if (queryLink != null) {
-                    return queryLink["results"];
-                  } else {
-                    return [];
-                  }
-                }
+              if (queryLink != null) {
+                return queryLink["results"];
               } else {
-                var response = await locator<Api>().searchLink(
-                  doctype: widget.doctypeField.options,
-                  txt: lowercaseQuery,
-                );
-
-                return response["results"];
+                return [];
               }
-            },
+            }
+          } else {
+            var response = await locator<Api>().searchLink(
+              doctype: widget.doctypeField.options,
+              txt: lowercaseQuery,
+            );
+
+            return response["results"];
+          }
+        },
       ),
     );
   }
