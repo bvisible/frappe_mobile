@@ -1,4 +1,3 @@
-// @dart=2.9
 import 'dart:io';
 
 import 'package:frappe_app/model/common.dart';
@@ -22,7 +21,7 @@ class NewDoc extends StatefulWidget {
   final DoctypeResponse meta;
 
   const NewDoc({
-    @required this.meta,
+    required this.meta,
   });
 
   @override

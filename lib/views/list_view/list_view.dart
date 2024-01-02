@@ -58,7 +58,7 @@ class CustomListView extends StatelessWidget {
             )
           : model.hasError
               ? handleError(
-                  error: model.error,
+                  error: model.error!,
                   context: context,
                   onRetry: () {
                     model.meta = meta;

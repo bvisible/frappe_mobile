@@ -104,7 +104,7 @@ class _SendEmailViewState extends State<SendEmailView> {
                               ),
                             );
 
-                            var uploadedAttachments = uploadedFiles
+                            var uploadedAttachments = uploadedFiles!
                                 .map(
                                   (uploadedFile) => Attachments(
                                     name: uploadedFile.name,
@@ -129,7 +129,7 @@ class _SendEmailViewState extends State<SendEmailView> {
                               ),
                             );
 
-                            model.addAttachments(filesToAttach);
+                            model.addAttachments(filesToAttach!);
                             Navigator.of(context).pop();
                                                     });
                         },

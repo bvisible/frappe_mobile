@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/image_render.dart';
 import 'package:frappe_app/config/palette.dart';
 import 'package:frappe_app/model/config.dart';
 import 'package:frappe_app/utils/dio_helper.dart';
@@ -63,57 +62,57 @@ class FormBuilderTextEditor<T> extends FormBuilderField<T> {
                     child: field.value != null
                         ? Html(
                             data: field.value as String,
-                            customRender: {
-                              "img": (renderContext, child) {
-                                var src = renderContext.tree.attributes['src'];
-                                if (src != null) {
-                                  if (!src.startsWith("http")) {
-                                    src = Config().baseUrl! + src;
-                                  }
-                                  return Image.network(
-                                    src,
-                                    headers: {
-                                      HttpHeaders.cookieHeader:
-                                          DioHelper.cookies!,
-                                    },
-                                  );
-                                }
-                              },
-                            },
-                            customImageRenders: {
-                              networkSourceMatcher(domains: [
-                                Config().baseUrl!,
-                              ]): networkImageRender(
-                                headers: {
-                                  HttpHeaders.cookieHeader: DioHelper.cookies!,
-                                },
-                                altWidget: (alt) => Text(alt ?? ""),
-                                loadingWidget: () => Text("Loading..."),
-                              ),
-                              // for relative paths, prefix with a base url
-                              (attr, _) =>
-                                      attr["src"] != null &&
-                                      !(attr["src"]!.startsWith("http") ||
-                                          attr["src"]!.startsWith("https")):
-                                  networkImageRender(
-                                headers: {
-                                  HttpHeaders.cookieHeader: DioHelper.cookies!,
-                                },
-                                mapUrl: (url) => Config().baseUrl! + url!,
-                              ),
-                              // Custom placeholder image for broken links
-                              networkSourceMatcher(): networkImageRender(
-                                  altWidget: (_) => FrappeLogo()),
-                            },
-                            onLinkTap: (url, _, __, ___) {
-                              print("Opening $url...");
-                            },
-                            onImageTap: (src, _, __, ___) {
-                              print(src);
-                            },
-                            onImageError: (exception, stackTrace) {
-                              print(exception);
-                            },
+                            // customRender: {
+                            //   "img": (renderContext, child) {
+                            //     var src = renderContext.tree.attributes['src'];
+                            //     if (src != null) {
+                            //       if (!src.startsWith("http")) {
+                            //         src = Config().baseUrl! + src;
+                            //       }
+                            //       return Image.network(
+                            //         src,
+                            //         headers: {
+                            //           HttpHeaders.cookieHeader:
+                            //               DioHelper.cookies!,
+                            //         },
+                            //       );
+                            //     }
+                            //   },
+                            // },
+                            // customImageRenders: {
+                            //   networkSourceMatcher(domains: [
+                            //     Config().baseUrl!,
+                            //   ]): networkImageRender(
+                            //     headers: {
+                            //       HttpHeaders.cookieHeader: DioHelper.cookies!,
+                            //     },
+                            //     altWidget: (alt) => Text(alt ?? ""),
+                            //     loadingWidget: () => Text("Loading..."),
+                            //   ),
+                            //   // for relative paths, prefix with a base url
+                            //   (attr, _) =>
+                            //           attr["src"] != null &&
+                            //           !(attr["src"]!.startsWith("http") ||
+                            //               attr["src"]!.startsWith("https")):
+                            //       networkImageRender(
+                            //     headers: {
+                            //       HttpHeaders.cookieHeader: DioHelper.cookies!,
+                            //     },
+                            //     mapUrl: (url) => Config().baseUrl! + url!,
+                            //   ),
+                            //   // Custom placeholder image for broken links
+                            //   networkSourceMatcher(): networkImageRender(
+                            //       altWidget: (_) => FrappeLogo()),
+                            // },
+                            // onLinkTap: (url, _, __, ___) {
+                            //   print("Opening $url...");
+                            // },
+                            // onImageTap: (src, _, __, ___) {
+                            //   print(src);
+                            // },
+                            // onImageError: (exception, stackTrace) {
+                            //   print(exception);
+                            // },
                           )
                         : Container(),
                   ),

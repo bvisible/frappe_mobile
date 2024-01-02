@@ -261,81 +261,81 @@ class _EmailBoxState extends State<EmailBox> {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Html(
                         data: message,
-                        customRender: {
-                          "img": (renderContext, child) {
-                            var src = renderContext.tree.attributes['src'];
-                            if (src != null) {
-                              if (!src.startsWith("http")) {
-                                src = Config().baseUrl! + src;
-                              }
-                              return GestureDetector(
-                                onTap: () => Navigator.of(
-                                  context,
-                                  rootNavigator: true,
-                                ).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => Scaffold(
-                                      appBar: AppBar(
-                                        elevation: 0.8,
-                                      ),
-                                      body: PhotoView(
-                                        imageProvider: NetworkImage(
-                                          src!,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                child: Image.network(
-                                  src,
-                                  headers: {
-                                    HttpHeaders.cookieHeader:
-                                        DioHelper.cookies!,
-                                  },
-                                ),
-                              );
-                            }
-                          },
-                        },
-                        customImageRenders: {
-                          networkSourceMatcher(domains: [
-                            Config().baseUrl!,
-                          ]): networkImageRender(
-                            headers: {
-                              HttpHeaders.cookieHeader: DioHelper.cookies!,
-                            },
-                            altWidget: (alt) => Text(alt ?? ""),
-                            loadingWidget: () => Text("Loading..."),
-                          ),
-                          // for relative paths, prefix with a base url
-                          (attr, _) =>
-                                  attr["src"] != null &&
-                                  !attr["src"]!.startsWith("http"):
-                              networkImageRender(
-                            headers: {
-                              HttpHeaders.cookieHeader: DioHelper.cookies!,
-                            },
-                            mapUrl: (url) => Config().baseUrl! + url!,
-                          ),
-                          // Custom placeholder image for broken links
-                          networkSourceMatcher(): networkImageRender(
-                              altWidget: (_) => FrappeLogo()),
-                        },
-                        onLinkTap: (url, _, __, ___) async {
-                          print("Opening $url...");
-                          if (url != null) {
-                            if (await canLaunch(url)) {
-                              await launch(
-                                url,
-                                headers: {
-                                  HttpHeaders.cookieHeader: DioHelper.cookies!,
-                                },
-                              );
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          }
-                        },
+                        // customRender: {
+                        //   "img": (renderContext, child) {
+                        //     var src = renderContext.tree.attributes['src'];
+                        //     if (src != null) {
+                        //       if (!src.startsWith("http")) {
+                        //         src = Config().baseUrl! + src;
+                        //       }
+                        //       return GestureDetector(
+                        //         onTap: () => Navigator.of(
+                        //           context,
+                        //           rootNavigator: true,
+                        //         ).push(
+                        //           MaterialPageRoute(
+                        //             builder: (context) => Scaffold(
+                        //               appBar: AppBar(
+                        //                 elevation: 0.8,
+                        //               ),
+                        //               body: PhotoView(
+                        //                 imageProvider: NetworkImage(
+                        //                   src!,
+                        //                 ),
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         ),
+                        //         child: Image.network(
+                        //           src,
+                        //           headers: {
+                        //             HttpHeaders.cookieHeader:
+                        //                 DioHelper.cookies!,
+                        //           },
+                        //         ),
+                        //       );
+                        //     }
+                        //   },
+                        // },
+                        // customImageRenders: {
+                        //   networkSourceMatcher(domains: [
+                        //     Config().baseUrl!,
+                        //   ]): networkImageRender(
+                        //     headers: {
+                        //       HttpHeaders.cookieHeader: DioHelper.cookies!,
+                        //     },
+                        //     altWidget: (alt) => Text(alt ?? ""),
+                        //     loadingWidget: () => Text("Loading..."),
+                        //   ),
+                        //   // for relative paths, prefix with a base url
+                        //   (attr, _) =>
+                        //           attr["src"] != null &&
+                        //           !attr["src"]!.startsWith("http"):
+                        //       networkImageRender(
+                        //     headers: {
+                        //       HttpHeaders.cookieHeader: DioHelper.cookies!,
+                        //     },
+                        //     mapUrl: (url) => Config().baseUrl! + url!,
+                        //   ),
+                        //   // Custom placeholder image for broken links
+                        //   networkSourceMatcher(): networkImageRender(
+                        //       altWidget: (_) => FrappeLogo()),
+                        // },
+                        // onLinkTap: (url, _, __, ___) async {
+                        //   print("Opening $url...");
+                        //   if (url != null) {
+                        //     if (await canLaunch(url)) {
+                        //       await launch(
+                        //         url,
+                        //         headers: {
+                        //           HttpHeaders.cookieHeader: DioHelper.cookies!,
+                        //         },
+                        //       );
+                        //     } else {
+                        //       throw 'Could not launch $url';
+                        //     }
+                        //   }
+                        // },
                       ),
                     ),
                   ),

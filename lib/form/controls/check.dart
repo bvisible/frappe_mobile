@@ -5,7 +5,6 @@ import 'package:frappe_app/model/doctype_response.dart';
 
 import '../../config/frappe_palette.dart';
 import '../../config/palette.dart';
-import '../../widgets/custom_form_builder_checkbox.dart';
 
 
 class Check extends StatelessWidget {
@@ -31,40 +30,42 @@ class Check extends StatelessWidget {
       validators.add(FormBuilderValidators.required());
     }
 
-    return CustomFormBuilderCheckbox(
-      name: doctypeField.fieldname,
-      key: key,
-      enabled:
-          doctypeField.readOnly != null ? doctypeField.readOnly == 0 : true,
-      valueTransformer: (val) {
-        return val == true ? 1 : 0;
-      },
-      activeColor: FrappePalette.blue,
-      initialValue: doc != null ? doc![doctypeField.fieldname] == 1 : null,
-      onChanged: (val) {
-        if (onControlChanged != null) {
-          onControlChanged!(
-            FieldValue(
-              field: doctypeField,
-              value: val == true ? 1 : 0,
-            ),
-          );
-        }
-      },
-      label: Text(
-        doctypeField.label!,
-        style: TextStyle(
-          color: FrappePalette.grey[700],
-          fontWeight: FontWeight.w400,
-          fontSize: 12,
-        ),
-      ),
-      decoration: Palette.formFieldDecoration(
-        label: doctypeField.label,
-        filled: false,
-        field: "check",
-      ),
-      validator: FormBuilderValidators.compose(validators),
-    );
+    return Text("Checkbox");
+
+    // return CustomFormBuilderCheckbox(
+    //   name: doctypeField.fieldname,
+    //   key: key,
+    //   enabled:
+    //       doctypeField.readOnly != null ? doctypeField.readOnly == 0 : true,
+    //   valueTransformer: (val) {
+    //     return val == true ? 1 : 0;
+    //   },
+    //   activeColor: FrappePalette.blue,
+    //   initialValue: doc != null ? doc![doctypeField.fieldname] == 1 : null,
+    //   onChanged: (val) {
+    //     if (onControlChanged != null) {
+    //       onControlChanged!(
+    //         FieldValue(
+    //           field: doctypeField,
+    //           value: val == true ? 1 : 0,
+    //         ),
+    //       );
+    //     }
+    //   },
+    //   label: Text(
+    //     doctypeField.label!,
+    //     style: TextStyle(
+    //       color: FrappePalette.grey[700],
+    //       fontWeight: FontWeight.w400,
+    //       fontSize: 12,
+    //     ),
+    //   ),
+    //   decoration: Palette.formFieldDecoration(
+    //     label: doctypeField.label,
+    //     filled: false,
+    //     field: "check",
+    //   ),
+    //   validator: FormBuilderValidators.compose(validators),
+    // );
   }
 }

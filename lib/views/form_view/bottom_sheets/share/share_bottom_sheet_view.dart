@@ -263,7 +263,7 @@ class SharedWithUser extends StatelessWidget {
             newPermission: permission,
             doctype: doctype,
             name: name,
-            user: share.user,
+            user: share.user!,
           );
         },
         child: Container(
