@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_js/flutter_js.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:frappe_app/model/common.dart';
 import 'package:frappe_app/model/offline_storage.dart';
 import 'package:frappe_app/services/storage_service.dart';
@@ -24,7 +22,6 @@ import '../services/api/api.dart';
 import '../views/no_internet.dart';
 
 import 'http.dart';
-import '../main.dart';
 import '../app/locator.dart';
 
 import '../utils/dio_helper.dart';
@@ -211,46 +208,6 @@ handleError({
   }
 }
 
-Future<void> showNotification({
-  required String title,
-  required String subtitle,
-  int index = 0,
-}) async {
-  const AndroidNotificationDetails androidPlatformChannelSpecifics =
-      AndroidNotificationDetails(
-    'FrappeChannelId',
-    'FrappeChannelName',
-    // 'FrappeChannelDescription',
-    // importance: Importance.max,
-    // priority: Priority.high,
-    ticker: 'ticker',
-  );
-  const NotificationDetails platformChannelSpecifics =
-      NotificationDetails(android: androidPlatformChannelSpecifics);
-  await flutterLocalNotificationsPlugin.show(
-    index,
-    title,
-    subtitle,
-    platformChannelSpecifics,
-  );
-}
-
-Future<int> getActiveNotifications() async {
-  // final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-  // final AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-  // if (!(androidInfo.version.sdkInt >= 23)) {
-  //   return 0;
-  // }
-
-  // final List<ActiveNotification> activeNotifications =
-  //     await flutterLocalNotificationsPlugin
-  //         .resolvePlatformSpecificImplementation<
-  //             AndroidFlutterLocalNotificationsPlugin>()
-  //         ?.getActiveNotifications();
-
-  return 0;
-}
-
 Map extractChangedValues(Map original, Map updated) {
   var changedValues = {};
   for (var key in updated.keys) {
@@ -289,34 +246,11 @@ getLinkFields(String doctype) async {
   return linkFieldDoctypes;
 }
 
-resetValues() async {
-  await locator<StorageService>()
-      .putSharedPrefBoolValue("backgroundTask", false);
-  await locator<StorageService>()
-      .putSharedPrefBoolValue("storeApiResponse", true);
-}
-
 initDb() async {
   await locator<StorageService>().initHiveStorage();
 
-  await locator<StorageService>().initHiveBox('queue');
   await locator<StorageService>().initHiveBox('offline');
   await locator<StorageService>().initHiveBox('config');
-}
-
-initLocalNotifications() async {
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('app_icon');
-
-  // final IOSInitializationSettings initializationSettingsIOS =
-  //     IOSInitializationSettings();
-  final InitializationSettings initializationSettings = InitializationSettings(
-    // iOS: initializationSettingsIOS,
-    android: initializationSettingsAndroid,
-  );
-  await flutterLocalNotificationsPlugin.initialize(
-    initializationSettings,
-  );
 }
 
 initAwesomeItems() async {
