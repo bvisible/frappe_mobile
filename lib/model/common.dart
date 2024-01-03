@@ -104,5 +104,5 @@ class FieldValue {
 }
 
 typedef OnControlChanged = void Function(
-  FieldValue fieldValue,
+  dynamic,
 );

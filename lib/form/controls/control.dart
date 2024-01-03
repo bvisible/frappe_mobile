@@ -26,7 +26,6 @@ import './text_editor.dart';
 import './time.dart';
 import './autocomplete.dart';
 import './link_field.dart';
-import './multi_select.dart';
 
 Widget makeControl({
   required DoctypeField field,
@@ -81,26 +80,6 @@ Widget makeControl({
         control = Select(
           doc: doc,
           doctypeField: field,
-          onControlChanged: onControlChanged,
-        );
-      }
-      break;
-
-    case "MultiSelect":
-      {
-        control = MultiSelect(
-          doctypeField: field,
-          doc: doc,
-          onControlChanged: onControlChanged,
-        );
-      }
-      break;
-
-    case "Table MultiSelect":
-      {
-        control = MultiSelect(
-          doctypeField: field,
-          doc: doc,
           onControlChanged: onControlChanged,
         );
       }
