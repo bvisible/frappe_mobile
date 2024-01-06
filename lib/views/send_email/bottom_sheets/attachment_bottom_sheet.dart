@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:frappe_app/config/frappe_icons.dart';
 import 'package:frappe_app/utils/frappe_icon.dart';
 
-
 class AttachmentBottomSheet extends StatelessWidget {
   final void Function() onAddAttachments;
   final void Function() onSelectAttachments;

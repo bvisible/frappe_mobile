@@ -4,7 +4,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:frappe_app/config/palette.dart';
 import 'package:frappe_app/model/doctype_response.dart';
 
-class ReadOnly extends StatelessWidget{
+class ReadOnly extends StatelessWidget {
   final DoctypeField doctypeField;
 
   final Key? key;

@@ -10,7 +10,7 @@ import 'package:frappe_app/utils/navigation_helper.dart';
 import 'package:frappe_app/views/form_view/form_view.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../app/locator.dart';
+import '../../app/app.locator.dart';
 import '../../model/doctype_response.dart';
 import '../../services/api/api.dart';
 import '../../utils/frappe_alert.dart';

@@ -3,7 +3,7 @@ import 'package:frappe_app/model/login_response.dart';
 import 'package:frappe_app/utils/dio_helper.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../app/locator.dart';
+import '../../app/app.locator.dart';
 import '../../services/api/api.dart';
 import '../../model/offline_storage.dart';
 

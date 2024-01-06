@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:crypto/crypto.dart';
 
-import '../app/locator.dart';
+import '../app/app.locator.dart';
 
 import '../model/desktop_page_response.dart';
 import '../model/doctype_response.dart';

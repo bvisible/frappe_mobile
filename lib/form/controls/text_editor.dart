@@ -22,7 +22,7 @@ class TextEditor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String? Function(dynamic)> validators = [];
-    
+
     if (doctypeField.reqd == 1) {
       validators.add(FormBuilderValidators.required());
     }

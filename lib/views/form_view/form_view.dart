@@ -387,7 +387,7 @@ class DocInfo extends StatelessWidget {
                   );
 
                   refreshCallback();
-                                },
+                },
               ),
               if (docInfo.energyPointLogs != null)
                 DocInfoItem(

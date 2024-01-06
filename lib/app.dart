@@ -33,41 +33,18 @@ class _FrappeAppState extends State<FrappeApp> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = ThemeData(
-      appBarTheme: AppBarTheme(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-      ),
-      textTheme: GoogleFonts.interTextTheme(
-        Theme.of(context).textTheme.apply(
-            // fontSizeFactor: 0.7,
-            ),
-      ),
-    );
-
-    return Portal(
-      child: MaterialApp(
-        builder: EasyLoading.init(),
-        debugShowCheckedModeBanner: false,
-        title: 'Frappe',
-        theme: theme,
-        localizationsDelegates: [
-          FormBuilderLocalizations.delegate,
-        ],
-        home: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).requestFocus(new FocusNode());
-          },
-          child: Scaffold(
-            body: _isLoaded
-                ? _isLoggedIn
-                    ? HomeView()
-                    : Login()
-                : Center(
-                    child: CircularProgressIndicator(),
-                  ),
-          ),
-        ),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: Scaffold(
+        body: _isLoaded
+            ? _isLoggedIn
+                ? HomeView()
+                : Login()
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
     );
   }

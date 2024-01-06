@@ -9,8 +9,7 @@ import 'package:frappe_app/views/form_view/form_view.dart';
 import 'package:injectable/injectable.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-
-import '../../app/locator.dart';
+import '../../app/app.locator.dart';
 
 import '../../model/doctype_response.dart';
 import '../../model/offline_storage.dart';

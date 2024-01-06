@@ -5,7 +5,6 @@ import 'package:frappe_app/model/doctype_response.dart';
 
 import '../../config/palette.dart';
 
-
 class Currency extends StatelessWidget {
   final DoctypeField doctypeField;
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../app/locator.dart';
+import '../app/app.locator.dart';
 import '../config/frappe_icons.dart';
 import '../config/palette.dart';
 import '../services/api/api.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_pagewise/flutter_pagewise.dart';
-import 'package:frappe_app/app/locator.dart';
+import 'package:frappe_app/app/app.locator.dart';
 import 'package:frappe_app/model/notification_response.dart';
 import 'package:frappe_app/services/api/api.dart';
 import 'package:frappe_app/utils/constants.dart';

@@ -9,7 +9,7 @@ import 'package:frappe_app/views/form_view/form_view.dart';
 import 'package:frappe_app/views/list_view/list_view.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../app/locator.dart';
+import '../../app/app.locator.dart';
 import '../../services/api/api.dart';
 import '../../views/base_viewmodel.dart';
 

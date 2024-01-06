@@ -8,7 +8,7 @@ import 'package:frappe_app/utils/enums.dart';
 import 'package:frappe_app/widgets/frappe_button.dart';
 import 'package:frappe_app/widgets/user_avatar.dart';
 
-import '../app/locator.dart';
+import '../app/app.locator.dart';
 
 import '../services/api/api.dart';
 

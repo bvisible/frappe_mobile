@@ -7,7 +7,6 @@ import 'package:frappe_app/model/doctype_response.dart';
 import '../../config/frappe_palette.dart';
 import '../../config/palette.dart';
 
-
 class Check extends StatelessWidget {
   final DoctypeField doctypeField;
   final OnControlChanged? onControlChanged;

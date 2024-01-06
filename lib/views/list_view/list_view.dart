@@ -12,7 +12,6 @@ import 'package:timeago/timeago.dart' as timeago;
 
 import '../../model/doctype_response.dart';
 
-
 import '../../views/list_view/list_view_viewmodel.dart';
 
 import '../../config/palette.dart';

@@ -1,6 +1,6 @@
 import '../services/storage_service.dart';
 
-import '../app/locator.dart';
+import '../app/app.locator.dart';
 
 class Config {
   static var configContainer = locator<StorageService>().getHiveBox('config');

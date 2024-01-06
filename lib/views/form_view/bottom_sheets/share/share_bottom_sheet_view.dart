@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:frappe_app/app/locator.dart';
+import 'package:frappe_app/app/app.locator.dart';
 import 'package:frappe_app/config/frappe_icons.dart';
 import 'package:frappe_app/config/frappe_palette.dart';
-import 'package:frappe_app/form/controls/multi_select.dart';
 import 'package:frappe_app/model/doctype_response.dart';
 import 'package:frappe_app/model/get_doc_response.dart';
 import 'package:frappe_app/model/offline_storage.dart';
@@ -133,28 +132,28 @@ class ShareBottomSheetView extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 8.0,
                   ),
-                  child: MultiSelect(
-                    onChanged: (l) {
-                      model.updateNewShares(l);
-                    },
-                    findSuggestions: (String query) async {
-                      if (query.length != 0) {
-                        var lowercaseQuery = query.toLowerCase();
-                        var response = await locator<Api>().searchLink(
-                          doctype: 'User',
-                          txt: lowercaseQuery,
-                        );
+                  // child: MultiSelect(
+                  //   onChanged: (l) {
+                  //     model.updateNewShares(l);
+                  //   },
+                  //   findSuggestions: (String query) async {
+                  //     if (query.length != 0) {
+                  //       var lowercaseQuery = query.toLowerCase();
+                  //       var response = await locator<Api>().searchLink(
+                  //         doctype: 'User',
+                  //         txt: lowercaseQuery,
+                  //       );
 
-                        return response["results"];
-                      } else {
-                        return [];
-                      }
-                    },
-                    doctypeField: DoctypeField(
-                      label: 'Add people or emails',
-                      fieldname: 'users',
-                    ),
-                  ),
+                  //       return response["results"];
+                  //     } else {
+                  //       return [];
+                  //     }
+                  //   },
+                  //   doctypeField: DoctypeField(
+                  //     label: 'Add people or emails',
+                  //     fieldname: 'users',
+                  //   ),
+                  // ),
                 ),
               ),
               SizedBox(

@@ -201,7 +201,7 @@ class AddFilter extends StatelessWidget {
                         );
 
                         onUpdate(_filter);
-                                            },
+                      },
                       child: Card(
                         child: Container(
                           decoration: BoxDecoration(
@@ -255,7 +255,7 @@ class AddFilter extends StatelessWidget {
                         );
 
                         onUpdate(_filter);
-                                            },
+                      },
                       child: Card(
                         child: Container(
                           decoration: BoxDecoration(

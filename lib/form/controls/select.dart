@@ -8,7 +8,7 @@ import 'package:frappe_app/utils/frappe_icon.dart';
 import '../../config/palette.dart';
 import '../../model/doctype_response.dart';
 
-class Select extends StatelessWidget{
+class Select extends StatelessWidget {
   final DoctypeField doctypeField;
   final OnControlChanged? onControlChanged;
 

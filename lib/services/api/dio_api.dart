@@ -33,8 +33,9 @@ class DioApi implements Api {
 
       if (response.statusCode == HttpStatus.ok) {
         if (response.headers.map["set-cookie"] != null) {
-          response.data["user_id"] =
-              response.headers.map["set-cookie"]![3].split(';')[0].split('=')[1];
+          response.data["user_id"] = response.headers.map["set-cookie"]![3]
+              .split(';')[0]
+              .split('=')[1];
         }
 
         return LoginResponse.fromJson(response.data);
@@ -672,7 +673,7 @@ class DioApi implements Api {
     };
 
     queryParams['page_length'] = pageLength;
-  
+
     try {
       final response = await DioHelper.dio!.post(
         '/method/frappe.desk.search.search_link',

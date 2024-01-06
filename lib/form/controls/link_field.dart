@@ -8,7 +8,7 @@ import 'package:frappe_app/utils/frappe_icon.dart';
 import 'package:frappe_app/views/form_view/form_view.dart';
 
 import '../../model/doctype_response.dart';
-import '../../app/locator.dart';
+import '../../app/app.locator.dart';
 import '../../services/api/api.dart';
 
 import '../../utils/helpers.dart';

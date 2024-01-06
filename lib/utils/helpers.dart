@@ -22,7 +22,7 @@ import '../services/api/api.dart';
 import '../views/no_internet.dart';
 
 import 'http.dart';
-import '../app/locator.dart';
+import '../app/app.locator.dart';
 
 import '../utils/dio_helper.dart';
 import '../utils/enums.dart';

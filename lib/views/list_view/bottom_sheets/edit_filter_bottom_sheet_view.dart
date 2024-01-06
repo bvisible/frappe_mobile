@@ -20,7 +20,7 @@ class EditFilterBottomSheetView extends StatelessWidget {
 
   const EditFilterBottomSheetView({
     required this.page,
-    this.fields = const[],
+    this.fields = const [],
     this.filter,
   });
 
@@ -97,9 +97,9 @@ class SelectFilterField extends StatelessWidget {
       ),
       onActionButtonPress: () {
         // if (model.filter.isInit) {
-          model.moveToPage(2);
+        model.moveToPage(2);
         // } else {
-          // Navigator.of(context).pop(model.filter);
+        // Navigator.of(context).pop(model.filter);
         // }
       },
       body: ListView(
@@ -177,7 +177,7 @@ class SelectFilterOperator extends StatelessWidget {
         //     return false;
         //   }
         // } else {
-          return true;
+        return true;
         // }
       }).map(
         (opt) {
@@ -261,12 +261,12 @@ class _EditValueState extends State<EditValue> {
               //     },
               //   );
               // } else {
-                // return makeControl(
-                //   field: widget.model.filter.field,
-                //   doc: {
-                //     widget.model.filter.field.fieldname: "",
-                //   },
-                // );
+              // return makeControl(
+              //   field: widget.model.filter.field,
+              //   doc: {
+              //     widget.model.filter.field.fieldname: "",
+              //   },
+              // );
               // }
             }),
           )

@@ -7,7 +7,7 @@ import 'package:frappe_app/model/offline_storage.dart';
 import 'package:frappe_app/utils/frappe_icon.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-import '../app/locator.dart';
+import '../app/app.locator.dart';
 import '../model/config.dart';
 
 import '../services/api/api.dart';

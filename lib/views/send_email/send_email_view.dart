@@ -4,7 +4,6 @@ import 'package:frappe_app/config/frappe_icons.dart';
 import 'package:frappe_app/config/frappe_palette.dart';
 import 'package:frappe_app/form/controls/check.dart';
 import 'package:frappe_app/form/controls/data.dart';
-import 'package:frappe_app/form/controls/multi_select.dart';
 import 'package:frappe_app/form/controls/text_editor.dart';
 import 'package:frappe_app/model/get_doc_response.dart';
 import 'package:frappe_app/model/upload_file_response.dart';
@@ -13,7 +12,7 @@ import 'package:frappe_app/views/send_email/bottom_sheets/attachment_bottom_shee
 import 'package:frappe_app/views/send_email/send_email_viewmodel.dart';
 import 'package:frappe_app/widgets/frappe_bottom_sheet.dart';
 
-import '../../app/locator.dart';
+import '../../app/app.locator.dart';
 
 import '../../services/api/api.dart';
 import '../base_view.dart';
@@ -116,7 +115,7 @@ class _SendEmailViewState extends State<SendEmailView> {
                                 .toList();
                             model.addAttachments(uploadedAttachments);
                             Navigator.of(context).pop();
-                                                    }, onSelectAttachments: () async {
+                          }, onSelectAttachments: () async {
                             List<Attachments>? filesToAttach =
                                 await showModalBottomSheet(
                               context: context,
@@ -131,7 +130,7 @@ class _SendEmailViewState extends State<SendEmailView> {
 
                             model.addAttachments(filesToAttach!);
                             Navigator.of(context).pop();
-                                                    });
+                          });
                         },
                       );
                     },
@@ -286,24 +285,24 @@ class _SendEmailViewState extends State<SendEmailView> {
                   children: [
                     Row(
                       children: [
-                        Flexible(
-                          child: MultiSelect(
-                            color: Colors.white,
-                            chipColor: FrappePalette.grey[100],
-                            doctypeField: model.fields[0],
-                            prefixIcon: Text(
-                              "${model.fields[0].label!}:",
-                              style: TextStyle(
-                                color: FrappePalette.grey[500],
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            doc: {
-                              model.fields[0].fieldname:
-                                  model.fields[0].defaultValue,
-                            },
-                          ),
-                        ),
+                        // Flexible(
+                        // child: MultiSelect(
+                        //   color: Colors.white,
+                        //   chipColor: FrappePalette.grey[100],
+                        //   doctypeField: model.fields[0],
+                        //   prefixIcon: Text(
+                        //     "${model.fields[0].label!}:",
+                        //     style: TextStyle(
+                        //       color: FrappePalette.grey[500],
+                        //       fontWeight: FontWeight.w400,
+                        //     ),
+                        //   ),
+                        //   doc: {
+                        //     model.fields[0].fieldname:
+                        //         model.fields[0].defaultValue,
+                        //   },
+                        // ),
+                        // ),
                         IconButton(
                           onPressed: () {
                             model.toggleExpanded();
@@ -325,41 +324,41 @@ class _SendEmailViewState extends State<SendEmailView> {
                             thickness: 1,
                             color: FrappePalette.grey[200],
                           ),
-                          MultiSelect(
-                            doctypeField: model.fields[1],
-                            color: Colors.white,
-                            chipColor: FrappePalette.grey[100],
-                            doc: {
-                              model.fields[1].fieldname:
-                                  model.fields[1].defaultValue,
-                            },
-                            prefixIcon: Text(
-                              "${model.fields[1].label!}:",
-                              style: TextStyle(
-                                color: FrappePalette.grey[500],
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
+                          // MultiSelect(
+                          //   doctypeField: model.fields[1],
+                          //   color: Colors.white,
+                          //   chipColor: FrappePalette.grey[100],
+                          //   doc: {
+                          //     model.fields[1].fieldname:
+                          //         model.fields[1].defaultValue,
+                          //   },
+                          //   prefixIcon: Text(
+                          //     "${model.fields[1].label!}:",
+                          //     style: TextStyle(
+                          //       color: FrappePalette.grey[500],
+                          //       fontWeight: FontWeight.w400,
+                          //     ),
+                          //   ),
+                          // ),
                           Divider(
                             thickness: 1,
                             color: FrappePalette.grey[200],
                           ),
-                          MultiSelect(
-                            doctypeField: model.fields[2],
-                            color: Colors.white,
-                            doc: {
-                              model.fields[2].fieldname:
-                                  model.fields[2].defaultValue,
-                            },
-                            prefixIcon: Text(
-                              "${model.fields[2].label!}:",
-                              style: TextStyle(
-                                color: FrappePalette.grey[500],
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
+                          // MultiSelect(
+                          //   doctypeField: model.fields[2],
+                          //   color: Colors.white,
+                          //   doc: {
+                          //     model.fields[2].fieldname:
+                          //         model.fields[2].defaultValue,
+                          //   },
+                          //   prefixIcon: Text(
+                          //     "${model.fields[2].label!}:",
+                          //     style: TextStyle(
+                          //       color: FrappePalette.grey[500],
+                          //       fontWeight: FontWeight.w400,
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

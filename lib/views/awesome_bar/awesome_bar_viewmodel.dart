@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frappe_app/app/locator.dart';
+import 'package:frappe_app/app/app.locator.dart';
 import 'package:frappe_app/model/common.dart';
 import 'package:frappe_app/model/offline_storage.dart';
 import 'package:frappe_app/services/api/api.dart';

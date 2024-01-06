@@ -5,7 +5,7 @@ import 'package:frappe_app/model/doctype_response.dart';
 
 import '../../config/palette.dart';
 
-class Int extends StatelessWidget{
+class Int extends StatelessWidget {
   final DoctypeField doctypeField;
   final void Function(String?)? onChanged;
   final Key? key;

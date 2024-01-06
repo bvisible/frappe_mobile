@@ -1,4 +1,4 @@
-import '../app/locator.dart';
+import '../app/app.locator.dart';
 import '../services/api/api.dart';
 
 import '../utils/dio_helper.dart';

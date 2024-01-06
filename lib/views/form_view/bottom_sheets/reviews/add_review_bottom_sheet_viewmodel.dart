@@ -1,4 +1,4 @@
-import 'package:frappe_app/app/locator.dart';
+import 'package:frappe_app/app/app.locator.dart';
 import 'package:frappe_app/model/config.dart';
 import 'package:frappe_app/model/doctype_response.dart';
 import 'package:frappe_app/model/get_doc_response.dart';
